@@ -9,18 +9,32 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "DalculatorResources",
-            targets: ["DalculatorResources"]),
+            targets: ["DalculatorResources"]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
+        .package(
+            url: "https://github.com/mac-cain13/R.swift.git",
+            .upToNextMajor(from: "7.3.0")
+        )
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DalculatorResources",
-            dependencies: []),
+            dependencies: [
+                .product(name: "RswiftLibrary", package: "R.swift")
+            ],
+            resources: [
+                .process("Resources")
+            ],
+            plugins: [
+                .plugin(name: "RswiftGeneratePublicResources", package: "R.swift")
+            ]
+        ),
         .testTarget(
             name: "DalculatorResourcesTests",
             dependencies: ["DalculatorResources"]),

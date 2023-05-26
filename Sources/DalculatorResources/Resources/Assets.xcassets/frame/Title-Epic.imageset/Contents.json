@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Title-Epic.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
